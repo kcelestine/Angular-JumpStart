@@ -45,20 +45,14 @@ pipeline {
         stage ('Smoke Test') {
             steps {
                 sh 'ls' 
+                sh 'ls coverage'
             }
         }  
     } // end stages
     
     post {
         always {
-           publishHTML target: [
-            allowMissing: false,
-            alwaysLinkToLastBuild: false,
-            keepAll: true,
-            reportDir: 'coverage',
-            reportFiles: 'results.html',
-            reportName: 'RCov Report'
-          ]
+
         }
     }
 }
