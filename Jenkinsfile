@@ -19,6 +19,7 @@ pipeline {
         stage ('Unit Test') {
             steps {
                 sh 'ng test --code-coverage' 
+                sh 'ls'
             }
         }     
 
