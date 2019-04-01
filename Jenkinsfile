@@ -26,6 +26,7 @@ pipeline {
         
         stage ('Sonarcube') {
             steps {
+               sh 'ls' 
                 //sonar-scanner -Dsonar.projectKey=front-end -Dsonar.organization=kcelestine-github -Dsonar.sources=. -Dsonar.host.url='https://sonarcloud.io' -Dsonar.login=b259b52022644f00916718a2f7c10446380c5702
             }   
         }        
