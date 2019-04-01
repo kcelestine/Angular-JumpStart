@@ -11,7 +11,7 @@ pipeline {
       			sh 'npm cache verify'
 				sh 'npm install'
 				sh 'npm install -g @angular/cli'
-              sh ' npm i -D @angular-devkit/core '
+        // sh ' npm i -D @angular-devkit/core '
 				sh 'ng build'
             }
         }
