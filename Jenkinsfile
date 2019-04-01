@@ -18,19 +18,14 @@ pipeline {
 
         stage ('Unit Test') {
             steps {
-                sh 'ng test' 
+                sh 'ng test --code-coverage' 
             }
         }     
-      
-        stage ('Code Coverage') {
-            steps {
-                sh 'ls' 
-            }
-        }
+
         
         stage ('Sonarcube') {
             steps {
-                sh 'ls' 
+                sonar-scanner   -Dsonar.projectKey=front-end   -Dsonar.organization=kcelestine-github   -Dsonar.sources=.   -Dsonar.host.url=https://sonarcloud.io   -Dsonar.login=b259b52022644f00916718a2f7c10446380c5702
             }
         }   
         
@@ -55,6 +50,14 @@ pipeline {
     
     post {
         always {
+           publishHTML target: [
+            allowMissing: false,
+            alwaysLinkToLastBuild: false,
+            keepAll: true,
+            reportDir: 'coverage',
+            reportFiles: 'results.html',
+            reportName: 'RCov Report'
+          ]
         }
     }
 }
